@@ -1,0 +1,21 @@
+{
+  "name": "Digital Sahayam",
+  "short_name": "Sahayam",
+  "description": "Digital Literacy for Rural Elderly",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FFF8F2",
+  "theme_color": "#E8640A",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
