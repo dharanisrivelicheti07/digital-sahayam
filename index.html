@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>డిజిటల్ సహాయం | Digital Sahayam</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <header class="site-header header-orange">
+    <div class="header-icon">📱</div>
+    <h1 class="header-title">డిజిటల్ సహాయం</h1>
+    <p class="header-sub">Digital Sahayam — Your Digital Helper</p>
+  </header>
+
+  <main class="page-container mt-4">
+    <p class="section-hint">మీకు ఏమి కావాలి? / What do you need?</p>
+
+    <div class="row g-3">
+      <div class="col-6">
+        <a class="big-btn btn-emergency" href="tel:112">
+          <span class="btn-icon">🆘</span>
+          <span class="btn-label">అత్యవసర కాల్</span>
+          <span class="btn-sublabel">Emergency 112</span>
+        </a>
+      </div>
+
+      <div class="col-6">
+        <div class="big-btn btn-whatsapp" id="btn-location">
+          <span class="btn-icon">📍</span>
+          <span class="btn-label">లొకేషన్ పంపు</span>
+          <span class="btn-sublabel">WhatsApp Location</span>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="big-btn btn-bank" onclick="openSheet('balance-sheet')">
+          <span class="btn-icon">🏦</span>
+          <span class="btn-label">బ్యాంక్ బ్యాలెన్స్</span>
+          <span class="btn-sublabel">Check Balance</span>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="big-btn btn-bill" onclick="openSheet('bill-sheet')">
+          <span class="btn-icon">💡</span>
+          <span class="btn-label">బిల్లు చెల్లించు</span>
+          <span class="btn-sublabel">Pay Bill</span>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <a class="big-btn btn-scam" href="scam-simulator.html">
+          <span class="btn-icon">🛡️</span>
+          <span class="btn-label">స్కామ్ నేర్చుకో</span>
+          <span class="btn-sublabel">Scam Simulator</span>
+        </a>
+      </div>
+
+      <div class="col-6">
+        <a class="big-btn btn-video" href="videos.html">
+          <span class="btn-icon">🎬</span>
+          <span class="btn-label">వీడియోలు చూడు</span>
+          <span class="btn-sublabel">Watch Videos</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div class="sheet-overlay" id="balance-sheet">
+    <div class="sheet-box">
+      <button class="sheet-close" onclick="closeSheet('balance-sheet')">✕</button>
+      <div class="sheet-title">🏦 బ్యాంక్ బ్యాలెన్స్ చెక్ చేయండి</div>
+      <div class="sheet-sub">మీ UPI app ఎంచుకోండి — PIN వేసి balance చూడొచ్చు</div>
+      <div class="upi-grid">
+        <a class="upi-btn" href="intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.paisa.user;end">
+          <span>🟢</span>Google Pay
+        </a>
+        <a class="upi-btn" href="intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.phonepe.app;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.phonepe.app;end">
+          <span>🟣</span>PhonePe
+        </a>
+        <a class="upi-btn" href="intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=net.one97.paytm;S.browser_fallback_url=https://play.google.com/store/apps/details?id=net.one97.paytm;end">
+          <span>🔵</span>Paytm
+        </a>
+        <a class="upi-btn" href="intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.sbi.yono;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.sbi.yono;end">
+          <span>🏛️</span>SBI YONO
+        </a>
+        <a class="upi-btn" href="tel:*99#">
+          <span>📞</span>USSD *99#
+        </a>
+        <a class="upi-btn" href="tel:18004253800">
+          <span>☎️</span>Missed Call
+        </a>
+      </div>
+      <p style="margin-top:14px;font-size:0.82rem;color:#888;text-align:center;">OTP ఎవ్వరికీ చెప్పవద్దు! / Never share OTP</p>
+    </div>
+  </div>
+
+  <div class="sheet-overlay" id="bill-sheet">
+    <div class="sheet-box">
+      <button class="sheet-close" onclick="closeSheet('bill-sheet')">✕</button>
+      <div class="sheet-title">💡 ఏ బిల్లు చెల్లించాలి?</div>
+      <div class="sheet-sub">మీకు కావలసిన option ఎంచుకోండి</div>
+      <div class="bill-grid">
+        <div class="bill-opt bill-trigger" data-type="electricity"><span>⚡</span>Electricity<br>కరెంట్ బిల్లు</div>
+        <div class="bill-opt bill-trigger" data-type="mobile"><span>📱</span>Mobile<br>Recharge</div>
+        <div class="bill-opt bill-trigger" data-type="water"><span>🚰</span>Water Bill<br>నీటి బిల్లు</div>
+        <div class="bill-opt bill-trigger" data-type="ott"><span>🎬</span>OTT / DTH<br>Recharge</div>
+        <div class="bill-opt bill-trigger" data-type="gas"><span>🔥</span>Gas Bill<br>Gas Booking</div>
+        <div class="bill-opt bill-trigger" data-type="other"><span>💳</span>Other<br>ఇతరాలు</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-overlay" id="upi-bill-sheet">
+    <div class="sheet-box">
+      <button class="sheet-close" onclick="closeSheet('upi-bill-sheet')">✕</button>
+      <div class="sheet-title" id="upi-bill-title">⚡ Electricity Bill</div>
+      <div class="sheet-sub">UPI app ఎంచుకోండి (AP & TS)</div>
+      <div class="upi-grid">
+        <a class="upi-btn" id="gpay-bill-link" href="#">
+          <span>🟢</span>Google Pay
+        </a>
+        <a class="upi-btn" id="phonepe-bill-link" href="#">
+          <span>🟣</span>PhonePe
+        </a>
+        <a class="upi-btn" id="paytm-bill-link" href="#">
+          <span>🔵</span>Paytm
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="location-toast" style="display:none;position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#1A7A4A;color:#fff;padding:14px 24px;border-radius:14px;font-family:'Baloo 2',cursive;font-weight:700;font-size:1rem;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.2);text-align:center;">
+    📍 WhatsApp కి redirect అవుతోంది!<br><small style="font-weight:400;font-size:0.85rem;">Location share చేయండి</small>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
