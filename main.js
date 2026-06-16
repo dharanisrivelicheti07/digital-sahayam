@@ -64,20 +64,47 @@ if (locationBtn) {
 }
 
 
-/* ---- Bill UPI Routing (Using App Launcher Intents) ---- */
-// These intents act exactly like tapping the app icon on the home screen.
-// They bypass browser blocks and include automatic Play Store fallback.
-const intentGPay = 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.google.android.apps.nbu.paisa.user;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.paisa.user;end';
-const intentPhonePe = 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.phonepe.app;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.phonepe.app;end';
-const intentPaytm = 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=net.one97.paytm;S.browser_fallback_url=https://play.google.com/store/apps/details?id=net.one97.paytm;end';
+/* ---- Bill UPI Routing (Direct Deep Links) ---- */
+// These links will attempt to jump directly to specific app sections
+// without ever falling back to the Google Play Store.
 
 const billLinks = {
-    electricity: { title: '⚡ Electricity Bill', gpay: intentGPay, phonepe: intentPhonePe, paytm: intentPaytm },
-    mobile:      { title: '📱 Mobile Recharge', gpay: intentGPay, phonepe: intentPhonePe, paytm: intentPaytm },
-    water:       { title: '🚰 Water Bill', gpay: intentGPay, phonepe: intentPhonePe, paytm: intentPaytm },
-    ott:         { title: '🎬 OTT / DTH', gpay: intentGPay, phonepe: intentPhonePe, paytm: intentPaytm },
-    gas:         { title: '🔥 Gas Booking', gpay: intentGPay, phonepe: intentPhonePe, paytm: intentPaytm },
-    other:       { title: '💳 Other Payment', gpay: intentGPay, phonepe: intentPhonePe, paytm: intentPaytm }
+    electricity: { 
+        title: '⚡ Electricity Bill', 
+        gpay:    'gpay://upi/pay?pa=TSSPDCL@ybl&pn=TSSPDCL', 
+        phonepe: 'phonepe://pay?pa=TSSPDCL@ybl', 
+        paytm:   'paytmmp://pay?pa=TSSPDCL@ybl' 
+    },
+    mobile: { 
+        title: '📱 Mobile Recharge', 
+        gpay:    'gpay://upi/recharge', 
+        phonepe: 'phonepe://recharge', 
+        paytm:   'paytmmp://recharge' 
+    },
+    water: { 
+        title: '🚰 Water Bill', 
+        gpay:    'gpay://', 
+        phonepe: 'phonepe://', 
+        paytm:   'paytmmp://' 
+    },
+    ott: { 
+        title: '🎬 OTT / DTH', 
+        gpay:    'gpay://upi/recharge', 
+        phonepe: 'phonepe://recharge', 
+        paytm:   'paytmmp://recharge' 
+    },
+    gas: { 
+        title: '🔥 Gas Booking', 
+        gpay:    'gpay://', 
+        phonepe: 'phonepe://', 
+        paytm:   'paytmmp://' 
+    },
+    other: { 
+        title: '💳 Other Payment', 
+        gpay:    'gpay://', 
+        phonepe: 'phonepe://', 
+        paytm:   'paytmmp://' 
+    }
 };
 
 document.querySelectorAll('.bill-trigger').forEach(btn => {
@@ -94,7 +121,6 @@ document.querySelectorAll('.bill-trigger').forEach(btn => {
         setTimeout(() => openSheet('upi-bill-sheet'), 150);
     });
 });
-
 
 /* ---- Video Page Logic (YouTube Lazy Load & Filtering) ---- */
 document.querySelectorAll('.video-thumb').forEach(thumb => {
