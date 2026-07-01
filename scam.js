@@ -1,3 +1,13 @@
+// ===== UI TRANSLATION DICTIONARY =====
+const UI_TEXT = {
+  back: { te: '← తిరిగి వెళ్ళు', en: '← Back' },
+  title: { te: '🛡️ స్కామ్ సిమ్యులేటర్', en: '🛡️ Scam Simulator' },
+  subtitle: { te: 'రియల్ లేదా ఫేక్? కనుక్కోండి!', en: 'Real or Fake? Find out!' },
+  scoreLabel: { te: 'మీ స్కోర్', en: 'Your Score' },
+  restart: { te: '🔄 మళ్ళీ ఆడండి', en: '🔄 Play Again' },
+  home: { te: '🏠 హోమ్ కి వెళ్ళు', en: '🏠 Go to Home' }
+};
+
 // ===== ALL SCAM QUESTIONS BANK (30 questions) =====
 const ALL_QUESTIONS = [
   {
@@ -136,7 +146,7 @@ const ALL_QUESTIONS = [
       en: '"Your mobile number will be disconnected in 2 hours due to pending KYC. Share your Aadhaar number and OTP immediately."'
     },
     explanation: {
-      te: '❌ ఇది స్కామ్! TRAI ఎప్పుడూ phone లో directly contact చేయదు. "Number disconnect అవుతుంది" అని భయపెట్టడం scam. Call drop చేయండి.',
+      te: '❌ ఇది స్కామ్! TRAI ఎప్పుడూ phone లో directly contact చేయదు. "Number disconnect అవుతుంది" అని భయపెట్టి scam చేయడం. Call drop చేయండి.',
       en: '❌ SCAM! TRAI never calls individuals directly. Threatening "number disconnection" is a scare tactic. Drop the call immediately.'
     }
   },
@@ -152,272 +162,6 @@ const ALL_QUESTIONS = [
     explanation: {
       te: '❌ ఇది స్కామ్! HDFC bank official site hdfcbank.com మాత్రమే. "hdfcbank-kyc.net" fake site. Bank ఎప్పుడూ SMS లో card details అడగదు. Delete చేయండి.',
       en: '❌ SCAM! HDFC official site is hdfcbank.com only. "hdfcbank-kyc.net" is a fake phishing site. Banks never ask for card details via SMS.'
-    }
-  },
-  {
-    type: 'whatsapp',
-    badge: 'badge-whatsapp',
-    isReal: false,
-    sender: { te: 'WhatsApp Job Offer', en: 'WhatsApp Job Offer' },
-    message: {
-      te: '💼 Work from Home Job! Amazon లో part-time job. రోజుకి 2 గంటలు పని చేసి ₹5,000 సంపాదించండి! Registration: ₹500. WhatsApp: 9988776655',
-      en: '💼 Work from Home! Part-time job at Amazon. Work 2 hours/day, earn ₹5,000! Registration fee: ₹500. WhatsApp: 9988776655'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! Amazon WhatsApp లో jobs offer చేయదు. "Registration fee" అడగడం fraud. Work-from-home scams చాలా common. ఎప్పుడూ fee pay చేయకండి.',
-      en: '❌ SCAM! Amazon never offers jobs via WhatsApp. Asking "registration fee" is fraud. Work-from-home scams are very common. Never pay any fee.'
-    }
-  },
-  {
-    type: 'sms',
-    badge: 'badge-sms',
-    isReal: true,
-    sender: { te: 'PAYTM', en: 'PAYTM' },
-    message: {
-      te: 'Paytm: మీ wallet కి ₹200 cashback credited అయింది order #PY123456 కోసం. Valid till 30-Jun-2026. Paytm app లో use చేయండి.',
-      en: 'Paytm: ₹200 cashback credited to your wallet for order #PY123456. Valid till 30-Jun-2026. Use in Paytm app.'
-    },
-    explanation: {
-      te: '✅ ఇది real! Paytm SMS PAYTM sender ID తో వస్తుంది. Link click అడగదు, OTP అడగదు. Cashback notification safe.',
-      en: '✅ REAL! Paytm SMS comes from PAYTM sender ID. Does not ask for link click or OTP. Cashback notification is safe.'
-    }
-  },
-  {
-    type: 'call',
-    badge: 'badge-call',
-    isReal: false,
-    sender: { te: 'Call — "CBI Officer"', en: 'Call — "CBI Officer"' },
-    message: {
-      te: '"మీ పేరు drug case లో వస్తోంది. Arrest warrant issue అయింది. ₹2 Lakh pay చేస్తే case close అవుతుంది. Digital Arrest అంటే ఏమిటో తెలుసా?"',
-      en: '"Your name came up in a drug case. Arrest warrant issued. Pay ₹2 Lakh to close the case. This is a Digital Arrest."'
-    },
-    explanation: {
-      te: '❌ ఇది "Digital Arrest" స్కామ్! CBI ఎప్పుడూ phone లో arrest announce చేయదు లేదా phone లో payment అడగదు. వెంటనే 1930 (Cyber Crime helpline) కి call చేయండి.',
-      en: '❌ "Digital Arrest" SCAM! CBI never announces arrests on phone or asks for phone payment. Call 1930 (Cyber Crime helpline) immediately.'
-    }
-  },
-  {
-    type: 'whatsapp',
-    badge: 'badge-whatsapp',
-    isReal: false,
-    sender: { te: 'WhatsApp — Unknown number', en: 'WhatsApp — Unknown number' },
-    message: {
-      te: '🔴 మీ WhatsApp 24 గంటల్లో ban అవుతుంది! WhatsApp Terms violate చేశారు. OTP ఇవ్వండి, మీ account restore చేస్తాం: 782456',
-      en: '🔴 Your WhatsApp will be banned in 24 hours! You violated Terms. Share OTP to restore: 782456'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! WhatsApp ఎప్పుడూ WhatsApp message ద్వారా OTP అడగదు. OTP ఇస్తే మీ account hack అవుతుంది. ఇది account takeover scam.',
-      en: '❌ SCAM! WhatsApp never asks for OTP via WhatsApp message. Sharing OTP will get your account hacked. This is an account takeover scam.'
-    }
-  },
-  {
-    type: 'sms',
-    badge: 'badge-sms',
-    isReal: false,
-    sender: { te: 'VM-PMKISAN (fake)', en: 'VM-PMKISAN (fake)' },
-    message: {
-      te: 'PM Kisan: మీ ₹6,000 installment pending ఉంది. Aadhaar link చేయడానికి ఈ link click చేయండి: pmkisan-aadhaar.in మీ bank details enter చేయండి.',
-      en: 'PM Kisan: Your ₹6,000 installment is pending. Link Aadhaar by clicking: pmkisan-aadhaar.in and enter your bank details.'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! PM Kisan official site: pmkisan.gov.in మాత్రమే. "pmkisan-aadhaar.in" fake site. Government ఎప్పుడూ SMS లో bank details అడగదు.',
-      en: '❌ SCAM! PM Kisan official site is pmkisan.gov.in only. "pmkisan-aadhaar.in" is fake. Government never asks for bank details via SMS.'
-    }
-  },
-  {
-    type: 'app',
-    badge: 'badge-app',
-    isReal: false,
-    sender: { te: 'Google Play Store (fake app)', en: 'Google Play Store (fake app)' },
-    message: {
-      te: '"AnyDesk" లేదా "TeamViewer" app install చేయమని ఒక bank officer చెప్పాడు. "మీ account fix చేస్తాం" అని అంటున్నాడు.',
-      en: 'A "bank officer" asked you to install "AnyDesk" or "TeamViewer" app. He says "We will fix your account."'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! AnyDesk/TeamViewer screen sharing apps. Install చేస్తే వారు మీ phone పూర్తిగా control చేస్తారు మరియు bank balance దొంగిలిస్తారు. ఎప్పుడూ install చేయకండి.',
-      en: '❌ SCAM! AnyDesk/TeamViewer are screen-sharing apps. If installed, they get full control of your phone and steal your bank balance. Never install these for anyone.'
-    }
-  },
-  {
-    type: 'sms',
-    badge: 'badge-sms',
-    isReal: true,
-    sender: { te: 'HPCL-GAS', en: 'HPCL-GAS' },
-    message: {
-      te: 'HPCL: మీ LPG cylinder delivery scheduled తేది 15-Jun-2026. Delivery person చేతికి cash pay చేయండి లేదా UPI వాడండి. Booking#: HP123456',
-      en: 'HPCL: Your LPG cylinder delivery is scheduled on 15-Jun-2026. Pay cash or UPI to delivery person. Booking#: HP123456'
-    },
-    explanation: {
-      te: '✅ ఇది real! HPCL SMS అధికారిక delivery notification. Link click అడగడం లేదు, advance payment అడగడం లేదు. Delivery person కి మాత్రమే pay చేయండి.',
-      en: '✅ REAL! HPCL SMS is an official delivery notification. No link click, no advance payment requested. Pay only to the delivery person directly.'
-    }
-  },
-  {
-    type: 'call',
-    badge: 'badge-call',
-    isReal: false,
-    sender: { te: 'Call — "Microsoft Support"', en: 'Call — "Microsoft Support"' },
-    message: {
-      te: '"మీ computer లో virus detect అయింది. వెంటనే ₹3,000 pay చేయండి, remove చేస్తాం. Payment చేయకపోతే computer permanently block అవుతుంది."',
-      en: '"Virus detected on your computer. Pay ₹3,000 immediately to remove it. Computer will be permanently blocked if not paid."'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! Microsoft ఎప్పుడూ unsolicited calls చేయదు. "Virus" అని భయపెట్టి money అడగడం classic tech support scam. Call disconnect చేయండి.',
-      en: '❌ SCAM! Microsoft never makes unsolicited calls. Scaring with "virus" threats to demand money is a classic tech support scam. Disconnect immediately.'
-    }
-  },
-  {
-    type: 'whatsapp',
-    badge: 'badge-whatsapp',
-    isReal: false,
-    sender: { te: 'WhatsApp — "Electricity Department"', en: 'WhatsApp — "Electricity Department"' },
-    message: {
-      te: '⚡ TSECPDCL: మీ electricity connection tonight 9 PM కి cut చేయబడుతుంది. Immediately ఈ number కి call చేసి pay చేయండి: 9876543210. ₹2,340 outstanding.',
-      en: '⚡ TSECPDCL: Your electricity will be cut at 9 PM tonight. Call 9876543210 and pay immediately. ₹2,340 outstanding.'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! Electricity department WhatsApp లో message పంపదు. "రాత్రి cut అవుతుంది" అని urgent చేయడం scam. Official TSECPDCL: 1912 కి call చేయండి.',
-      en: '❌ SCAM! Electricity dept does not send WhatsApp messages. Creating urgency about night disconnection is a scam tactic. Call official TSECPDCL: 1912.'
-    }
-  },
-  {
-    type: 'sms',
-    badge: 'badge-sms',
-    isReal: true,
-    sender: { te: 'BOIIND', en: 'BOIIND' },
-    message: {
-      te: 'Bank of India: మీ FD ₹1,00,000 matured అయింది తేది 14-Jun-2026. Auto-renewal process అయింది. Details: bankofIndia.in లో login చేయండి.',
-      en: 'Bank of India: Your FD of ₹1,00,000 matured on 14-Jun-2026. Auto-renewal processed. Details at bankofIndia.in'
-    },
-    explanation: {
-      te: '✅ ఇది real! Bank of India official SMS BOIIND sender ID తో వస్తుంది. OTP అడగడం లేదు, link click అడగడం లేదు. FD maturity notification safe.',
-      en: '✅ REAL! Bank of India official SMS comes from BOIIND sender ID. No OTP or link click requested. FD maturity notification is safe.'
-    }
-  },
-  {
-    type: 'app',
-    badge: 'badge-app',
-    isReal: false,
-    sender: { te: 'WhatsApp Forward', en: 'WhatsApp Forward' },
-    message: {
-      te: '🚨 Jio FREE Recharge! Jio 75th Anniversary Celebration! ఈ link click చేయండి, మీ number enter చేయండి, మీ contacts కి forward చేయండి — 90 Days FREE recharge పొందండి! jio-offer2026.com',
-      en: '🚨 Jio FREE Recharge! Jio 75th Anniversary! Click link, enter your number, forward to contacts — get 90 Days FREE! jio-offer2026.com'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! Jio అటువంటి offers WhatsApp లో announce చేయదు. "Contacts కి forward చేయి" అంటే scam spread చేయమని అర్థం. Delete చేసి ignore చేయండి.',
-      en: '❌ SCAM! Jio never announces offers via WhatsApp forwards. "Forward to contacts" means they want to spread the scam. Delete and ignore it.'
-    }
-  },
-  {
-    type: 'call',
-    badge: 'badge-call',
-    isReal: false,
-    sender: { te: 'Call — Toll Free 1800xxxxxx', en: 'Call — Toll Free 1800xxxxxx' },
-    message: {
-      te: '"Hello, I am calling from your insurance company. Your policy is about to expire. Pay ₹3,500 now via phone to continue coverage. I can take UPI payment on this call."',
-      en: '"Hello, I am calling from your insurance company. Your policy expires soon. Pay ₹3,500 now via UPI on this call to continue."'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! Insurance companies phone లో direct payment అడగవు. మీ policy number, official company website check చేయండి. Unknown caller కి payment చేయకండి.',
-      en: '❌ SCAM! Insurance companies never ask for direct phone payment. Check your policy number and official company website. Never pay unknown callers.'
-    }
-  },
-  {
-    type: 'sms',
-    badge: 'badge-sms',
-    isReal: false,
-    sender: { te: 'AD-ICICI (fake)', en: 'AD-ICICI (fake)' },
-    message: {
-      te: 'ICICI Bank: Congratulations! మీకు Pre-approved Personal Loan ₹5,00,000 అందుబాటులో ఉంది. Instant disbursal. Processing fee ₹2,000 pay చేయండి: iciciloan.net',
-      en: 'ICICI Bank: Congratulations! Pre-approved Personal Loan ₹5,00,000 available. Instant disbursal. Pay ₹2,000 processing fee at iciciloan.net'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! ICICI official site: icicibank.com మాత్రమే. "iciciloan.net" fake. Loan processing fee advance లో అడగడం fraud. Banks ఎప్పుడూ advance fee అడగవు.',
-      en: '❌ SCAM! ICICI official site is icicibank.com only. "iciciloan.net" is fake. Asking for loan processing fee upfront is fraud. Banks never ask for advance fees.'
-    }
-  },
-  {
-    type: 'whatsapp',
-    badge: 'badge-whatsapp',
-    isReal: true,
-    sender: { te: 'WhatsApp — నీ కొడుకు/కూతురు', en: 'WhatsApp — your son/daughter' },
-    message: {
-      te: 'అమ్మా, నేను office లో ఉన్నాను. రాత్రి 8 కి ఇంటికి వస్తాను. Dinner ready చేయండి. Love you! 😊',
-      en: 'Mom, I am in office. Will come home by 8 PM. Please have dinner ready. Love you! 😊'
-    },
-    explanation: {
-      te: '✅ ఇది real normal message! డబ్బు అడగడం లేదు, link లేదు, urgency లేదు. Personal family message safe. Scam messages ఎప్పుడూ money, links, లేదా urgency కలిగి ఉంటాయి.',
-      en: '✅ REAL normal message! No money request, no links, no urgency. Personal family messages are safe. Scam messages always have money requests, links, or urgency.'
-    }
-  },
-  {
-    type: 'sms',
-    badge: 'badge-sms',
-    isReal: false,
-    sender: { te: 'Unknown Number', en: 'Unknown Number' },
-    message: {
-      te: 'మీ UPI ID కి ₹15,000 transfer చేయబడింది. Confirm చేయడానికి మీ UPI PIN enter చేయండి ఈ link లో: upi-confirm.com/verify',
-      en: 'Rs.15,000 has been transferred to your UPI ID. Enter your UPI PIN to confirm receipt: upi-confirm.com/verify'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! UPI money receive చేయడానికి ఎప్పుడూ PIN అడగదు. PIN enter చేస్తే మీ account నుంచి money పోతుంది, వస్తుంది కాదు! PIN = money పోవడానికి మాత్రమే.',
-      en: '❌ SCAM! UPI never asks for PIN to receive money. If you enter PIN, money LEAVES your account! PIN is only for sending money, never for receiving.'
-    }
-  },
-  {
-    type: 'call',
-    badge: 'badge-call',
-    isReal: true,
-    sender: { te: 'Call — 1800-XXX-XXXX (Bank Toll Free)', en: 'Call — 1800-XXX-XXXX (Bank Toll Free)' },
-    message: {
-      te: '"నమస్కారం, మీరు SBI customer care కి call చేశారు. మీ account relate చేసిన problem కోసం, దయచేసి మీ registered mobile number confirm చేయండి." (మీరు call చేశారు)',
-      en: '"Welcome to SBI customer care. For your account-related issue, please confirm your registered mobile number." (You called them)'
-    },
-    explanation: {
-      te: '✅ ఇది real! మీరు call చేసినప్పుడు bank మీ registered number అడగవచ్చు. కానీ OTP, full card number, CVV ఎప్పుడూ అడగదు. మీరు call చేయడం vs వారు call చేయడం తేడా గుర్తుంచుకోండి.',
-      en: '✅ REAL! When YOU call the bank, they may verify your registered mobile. But they NEVER ask for OTP, full card number, or CVV. Remember: you calling them vs them calling you is very different.'
-    }
-  },
-  {
-    type: 'whatsapp',
-    badge: 'badge-whatsapp',
-    isReal: false,
-    sender: { te: 'WhatsApp — "Courier Company"', en: 'WhatsApp — "Courier Company"' },
-    message: {
-      te: '📦 FedEx: మీ parcel customs లో hold అయింది. Drugs/illegal items suspect అయ్యాయి. ₹10,000 customs duty pay చేయకపోతే FIR file అవుతుంది. Immediately WhatsApp చేయండి.',
-      en: '📦 FedEx: Your parcel is held at customs. Drugs/illegal items suspected. Pay ₹10,000 customs duty or FIR will be filed. WhatsApp immediately.'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! FedEx/courier companies WhatsApp లో customs demands పంపవు. "FIR, arrest" అని భయపెట్టడం classic scam. 1930 కి call చేయండి.',
-      en: '❌ SCAM! Courier companies never make customs demands on WhatsApp. Threatening "FIR, arrest" is a classic intimidation scam. Call 1930 (Cyber Crime).'
-    }
-  },
-  {
-    type: 'sms',
-    badge: 'badge-sms',
-    isReal: true,
-    sender: { te: 'BSNL-CARE', en: 'BSNL-CARE' },
-    message: {
-      te: 'BSNL: మీ postpaid bill ₹456 due తేది 20-Jun-2026. Pay via myBSNL app లేదా bsnl.co.in లో. Helpline: 1800-180-1503.',
-      en: 'BSNL: Your postpaid bill of ₹456 is due on 20-Jun-2026. Pay via myBSNL app or bsnl.co.in. Helpline: 1800-180-1503.'
-    },
-    explanation: {
-      te: '✅ ఇది real! BSNL official SMS BSNL-CARE sender ID తో వస్తుంది. Official site bsnl.co.in, official helpline 1800-180-1503. OTP లేదా personal info అడగడం లేదు.',
-      en: '✅ REAL! BSNL official SMS comes from BSNL-CARE. Official site bsnl.co.in, helpline 1800-180-1503. No OTP or personal info requested.'
-    }
-  },
-  {
-    type: 'app',
-    badge: 'badge-app',
-    isReal: false,
-    sender: { te: 'Online Ad / Pop-up', en: 'Online Ad / Pop-up' },
-    message: {
-      te: '🏆 మీరు TODAY\'s LUCKY WINNER! Spin the wheel చేయండి — iPhone, Gold, లేదా ₹1 Lakh cash win చేయండి! Only 5 minutes left! [SPIN NOW] అనే button',
-      en: '🏆 You are TODAY\'s LUCKY WINNER! Spin the wheel — win iPhone, Gold, or ₹1 Lakh cash! Only 5 minutes left! [SPIN NOW]'
-    },
-    explanation: {
-      te: '❌ ఇది స్కామ్! "Lucky winner, spin wheel, countdown timer" అన్నీ scam signs. ఈ games లో కొన్ని rounds తర్వాత personal/bank details అడుగుతారు. వెంటనే close చేయండి.',
-      en: '❌ SCAM! "Lucky winner, spin wheel, countdown timer" are all scam signs. After a few rounds, these ask for personal/bank details. Close immediately.'
     }
   }
 ];
@@ -438,10 +182,22 @@ function shuffle(arr) {
   return a;
 }
 
+function updateUIText() {
+  // Update static UI text elements based on selected language
+  document.getElementById('ui-back').textContent = UI_TEXT.back[lang];
+  document.getElementById('ui-title').textContent = UI_TEXT.title[lang];
+  document.getElementById('ui-subtitle').textContent = UI_TEXT.subtitle[lang];
+  document.getElementById('ui-score-label').textContent = UI_TEXT.scoreLabel[lang];
+  document.getElementById('ui-restart').textContent = UI_TEXT.restart[lang];
+  document.getElementById('ui-home').textContent = UI_TEXT.home[lang];
+}
+
 function setLang(l) {
   lang = l;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('lang-' + l).classList.add('active');
+  
+  updateUIText();
   renderQuestion();
 }
 
@@ -450,6 +206,9 @@ function startGame() {
   currentQ = 0;
   score = 0;
   answered = false;
+  
+  updateUIText(); // Ensure UI starts in correct language
+  
   document.getElementById('scoreScreen').style.display = 'none';
   document.getElementById('gameArea').style.display = 'block';
   renderQuestion();
@@ -458,14 +217,22 @@ function startGame() {
 function renderQuestion() {
   if (currentQ >= questions.length) { showScore(); return; }
   const q = questions[currentQ];
-  answered = false;
+
+  // If this question was already answered before switching languages, keep it in the answered state.
+  // Otherwise, reset buttons for the new question.
+  if (!answered) {
+    document.getElementById('resultCard').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+    document.getElementById('btnReal').disabled = false;
+    document.getElementById('btnFake').disabled = false;
+  }
 
   // Progress
   const pct = (currentQ / questions.length) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('qCounter').textContent = `${currentQ + 1} / ${questions.length}`;
 
-  // Badge
+  // Badge Translation
   const badge = document.getElementById('qBadge');
   badge.className = 'q-type-badge ' + q.badge;
   const typeLabels = {
@@ -477,34 +244,35 @@ function renderQuestion() {
   };
   badge.textContent = typeLabels[q.type][lang];
 
-  // Sender
+  // Sender Translation
   document.getElementById('msgSender').textContent = q.sender[lang];
 
-  // Message
+  // DOM Visibility Logic for the Question Message
   document.getElementById('msgTelugu').textContent = q.message.te;
   document.getElementById('msgEnglish').textContent = q.message.en;
-  document.getElementById('msgEnglish').style.display = lang === 'en' ? 'none' : 'block';
-  document.getElementById('msgTelugu').style.display = 'block';
 
-  // Buttons
   const realBtn = document.getElementById('btnReal');
   const fakeBtn = document.getElementById('btnFake');
-  realBtn.disabled = false;
-  fakeBtn.disabled = false;
-  realBtn.style.opacity = 1;
-  fakeBtn.style.opacity = 1;
 
   if (lang === 'te') {
+    // Show only Telugu, hide English
+    document.getElementById('msgTelugu').style.display = 'block';
+    document.getElementById('msgEnglish').style.display = 'none';
     realBtn.innerHTML = '✅ ఇది Real';
     fakeBtn.innerHTML = '❌ ఇది Fake / స్కామ్';
   } else {
+    // Show only English, hide Telugu
+    document.getElementById('msgTelugu').style.display = 'none';
+    document.getElementById('msgEnglish').style.display = 'block';
     realBtn.innerHTML = '✅ This is Real';
     fakeBtn.innerHTML = '❌ This is Fake / Scam';
   }
-
-  // Hide result
-  document.getElementById('resultCard').style.display = 'none';
-  document.getElementById('nextBtn').style.display = 'none';
+  
+  // If the user already answered, make sure the result card updates its language instantly
+  if (answered) {
+    updateResultCardLanguage();
+    updateNextButtonText();
+  }
 }
 
 function answer(choice) {
@@ -520,20 +288,39 @@ function answer(choice) {
   document.getElementById('btnReal').disabled = true;
   document.getElementById('btnFake').disabled = true;
 
-  // Show result
+  // Setup the Result Card
   const rc = document.getElementById('resultCard');
   rc.className = 'result-card ' + (correct ? 'correct' : 'wrong');
   rc.style.display = 'block';
   document.getElementById('resultIcon').textContent = correct ? '✅' : '❌';
+  
   document.getElementById('resultTelugu').textContent = q.explanation.te;
   document.getElementById('resultEnglish').textContent = q.explanation.en;
-  document.getElementById('resultEnglish').style.display = lang === 'en' ? 'none' : 'block';
 
-  // Next button
+  updateResultCardLanguage();
+
+  // Show Next button
   const nextBtn = document.getElementById('nextBtn');
   nextBtn.style.display = 'block';
+  updateNextButtonText();
+}
+
+// Helper to handle Result text visibility
+function updateResultCardLanguage() {
+  if (lang === 'te') {
+    document.getElementById('resultTelugu').style.display = 'block';
+    document.getElementById('resultEnglish').style.display = 'none';
+  } else {
+    document.getElementById('resultTelugu').style.display = 'none';
+    document.getElementById('resultEnglish').style.display = 'block';
+  }
+}
+
+// Helper to handle the "Next" button text translation
+function updateNextButtonText() {
+  const nextBtn = document.getElementById('nextBtn');
   if (currentQ + 1 >= questions.length) {
-    nextBtn.textContent = lang === 'te' ? '🏆 Score చూడండి' : '🏆 See Score';
+    nextBtn.textContent = lang === 'te' ? '🏆 స్కోర్ చూడండి' : '🏆 See Score';
   } else {
     nextBtn.textContent = lang === 'te' ? 'తదుపరి ప్రశ్న →' : 'Next Question →';
   }
@@ -542,6 +329,7 @@ function answer(choice) {
 function nextQuestion() {
   currentQ++;
   if (currentQ >= questions.length) { showScore(); return; }
+  answered = false; // Reset answer state for the new question
   renderQuestion();
 }
 
@@ -558,22 +346,22 @@ function showScore() {
   if (pct >= 0.9) {
     emoji = '🏆';
     msg = lang === 'te'
-      ? 'అద్భుతం! మీరు digital scams గురించి చాలా బాగా తెలుసు. మీ family కి కూడా చెప్పండి!'
+      ? 'అద్భుతం! మీరు డిజిటల్ స్కామ్స్ గురించి చాలా బాగా తెలుసుకున్నారు. మీ ఫ్యామిలీకి కూడా చెప్పండి!'
       : 'Excellent! You know digital scams very well. Share this knowledge with your family!';
   } else if (pct >= 0.7) {
     emoji = '👍';
     msg = lang === 'te'
-      ? 'చాలా బాగుంది! కొంచెం practice తో మీరు expert అవుతారు. మళ్ళీ try చేయండి!'
+      ? 'చాలా బాగుంది! కొంచెం ప్రాక్టీస్ తో మీరు ఎక్స్‌పర్ట్ అవుతారు. మళ్ళీ ట్రై చేయండి!'
       : 'Good job! With a little more practice you will be an expert. Try again!';
   } else if (pct >= 0.5) {
     emoji = '📚';
     msg = lang === 'te'
-      ? 'నేర్చుకుంటున్నారు! Scam signs గుర్తుంచుకోండి: urgency + money + link = SCAM. మళ్ళీ try చేయండి!'
+      ? 'నేర్చుకుంటున్నారు! గుర్తుంచుకోండి: తొందరపెట్టడం + డబ్బు అడగడం + లింక్ నొక్కమనడం = SCAM.'
       : 'Keep learning! Remember: urgency + money + link = SCAM. Try again!';
   } else {
     emoji = '💪';
     msg = lang === 'te'
-      ? 'పర్వాలేదు! Practice తో నేర్చుకుంటారు. Golden rule: ఎవరైనా phone లో డబ్బు అడిగితే — అది SCAM!'
+      ? 'పర్వాలేదు! ప్రాక్టీస్ తో నేర్చుకుంటారు. గోల్డెన్ రూల్: ఎవరైనా ఫోన్ లో డబ్బు అడిగితే — అది SCAM!'
       : 'Don\'t worry! Practice makes perfect. Golden rule: Anyone asking for money on phone = SCAM!';
   }
 
