@@ -136,7 +136,7 @@ const ALL_QUESTIONS = [
       en: '"Your mobile number will be disconnected in 2 hours due to pending KYC. Share your Aadhaar number and OTP immediately."'
     },
     explanation: {
-      te: '❌ ఇది స్కామ్! TRAI ఎప్పుడూ phone లో directly contact చేయదు. "Number disconnect అవుతుంది" అని భయపెట్టడం scam. Call drop చేయండి.',
+      te: '❌ ఇది స్కామ్! TRAI ఎప్పుడూ phone లో directly contact చేయదు. "Number disconnect అవుతుంది" అని భయపెట్టి scam చేస్తారు. Call drop చేయండి.',
       en: '❌ SCAM! TRAI never calls individuals directly. Threatening "number disconnection" is a scare tactic. Drop the call immediately.'
     }
   },
@@ -468,6 +468,7 @@ function renderQuestion() {
   // Badge
   const badge = document.getElementById('qBadge');
   badge.className = 'q-type-badge ' + q.badge;
+  
   const typeLabels = {
     whatsapp: { te: '💬 WhatsApp మెసేజ్', en: '💬 WhatsApp Message' },
     sms:      { te: '📱 SMS మెసేజ్', en: '📱 SMS Message' },
@@ -475,16 +476,19 @@ function renderQuestion() {
     email:    { te: '📧 Email', en: '📧 Email' },
     app:      { te: '📲 App / Online', en: '📲 App / Online' }
   };
+  
   badge.textContent = typeLabels[q.type][lang];
 
   // Sender
   document.getElementById('msgSender').textContent = q.sender[lang];
 
-  // Message
+  // Message Text
   document.getElementById('msgTelugu').textContent = q.message.te;
   document.getElementById('msgEnglish').textContent = q.message.en;
-  document.getElementById('msgEnglish').style.display = lang === 'en' ? 'none' : 'block';
-  document.getElementById('msgTelugu').style.display = 'block';
+  
+  // FIX: Properly toggle languages (Fixed the old bug!)
+  document.getElementById('msgTelugu').style.display = lang === 'te' ? 'block' : 'none';
+  document.getElementById('msgEnglish').style.display = lang === 'en' ? 'block' : 'none';
 
   // Buttons
   const realBtn = document.getElementById('btnReal');
@@ -493,6 +497,10 @@ function renderQuestion() {
   fakeBtn.disabled = false;
   realBtn.style.opacity = 1;
   fakeBtn.style.opacity = 1;
+  
+  // Clean classes for styling
+  realBtn.className = 'ans-btn ans-real';
+  fakeBtn.className = 'ans-btn ans-fake';
 
   if (lang === 'te') {
     realBtn.innerHTML = '✅ ఇది Real';
@@ -502,7 +510,7 @@ function renderQuestion() {
     fakeBtn.innerHTML = '❌ This is Fake / Scam';
   }
 
-  // Hide result
+  // Hide result card
   document.getElementById('resultCard').style.display = 'none';
   document.getElementById('nextBtn').style.display = 'none';
 }
@@ -516,18 +524,32 @@ function answer(choice) {
 
   if (correct) score++;
 
-  // Disable buttons
-  document.getElementById('btnReal').disabled = true;
-  document.getElementById('btnFake').disabled = true;
+  // Disable buttons & Highlight selection
+  const realBtn = document.getElementById('btnReal');
+  const fakeBtn = document.getElementById('btnFake');
+  realBtn.disabled = true;
+  fakeBtn.disabled = true;
+  
+  if (choice === 'real') {
+    realBtn.classList.add(correct ? 'selected-correct' : 'selected-wrong');
+    fakeBtn.style.opacity = 0.5;
+  } else {
+    fakeBtn.classList.add(correct ? 'selected-correct' : 'selected-wrong');
+    realBtn.style.opacity = 0.5;
+  }
 
   // Show result
   const rc = document.getElementById('resultCard');
   rc.className = 'result-card ' + (correct ? 'correct' : 'wrong');
   rc.style.display = 'block';
+  
   document.getElementById('resultIcon').textContent = correct ? '✅' : '❌';
   document.getElementById('resultTelugu').textContent = q.explanation.te;
   document.getElementById('resultEnglish').textContent = q.explanation.en;
-  document.getElementById('resultEnglish').style.display = lang === 'en' ? 'none' : 'block';
+  
+  // FIX: Properly toggle explanation languages
+  document.getElementById('resultTelugu').style.display = lang === 'te' ? 'block' : 'none';
+  document.getElementById('resultEnglish').style.display = lang === 'en' ? 'block' : 'none';
 
   // Next button
   const nextBtn = document.getElementById('nextBtn');
