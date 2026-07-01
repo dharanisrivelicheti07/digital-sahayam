@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>స్కామ్ సిమ్యులేటర్</title>
+  <title>స్కామ్ సిమ్యులేటర్ | Scam Simulator</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -13,9 +13,9 @@
   <header class="sim-header">
     <div style="max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
       <div>
-        <a href="index.html" style="color:#8b949e;text-decoration:none;font-size:0.85rem;">← తిరిగి వెళ్ళు / Back</a>
-        <h1 class="sim-title" style="margin-top:0.3rem;">🛡️ స్కామ్ సిమ్యులేటర్</h1>
-        <p style="font-size:0.8rem;color:#8b949e;margin-top:2px;">Scam Simulator — Real or Fake?</p>
+        <a href="index.html" id="ui-back" style="color:#8b949e;text-decoration:none;font-size:0.85rem;">← తిరిగి వెళ్ళు</a>
+        <h1 class="sim-title" id="ui-title" style="margin-top:0.3rem;">🛡️ స్కామ్ సిమ్యులేటర్</h1>
+        <p style="font-size:0.8rem;color:#8b949e;margin-top:2px;" id="ui-subtitle">రియల్ లేదా ఫేక్? కనుక్కోండి!</p>
       </div>
       <div class="lang-toggle">
         <button class="lang-btn active" id="lang-te" onclick="setLang('te')">తెలుగు</button>
@@ -26,7 +26,6 @@
 
   <div class="sim-body">
 
-    <!-- Game Area -->
     <div id="gameArea">
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
@@ -52,21 +51,20 @@
       <div class="result-card" id="resultCard">
         <div class="result-icon" id="resultIcon"></div>
         <div class="result-telugu" id="resultTelugu"></div>
-        <div class="result-english" id="resultEnglish"></div>
+        <div class="result-english" id="resultEnglish" style="display:none;"></div>
       </div>
 
       <button class="next-btn" id="nextBtn" onclick="nextQuestion()" style="display:none;">తదుపరి ప్రశ్న →</button>
     </div>
 
-    <!-- Score Screen -->
     <div class="score-screen" id="scoreScreen">
       <div class="score-emoji" id="scoreEmoji">🏆</div>
       <div class="score-number" id="finalScore">0 / 10</div>
-      <div class="score-label">మీ score / Your Score</div>
+      <div class="score-label" id="ui-score-label">మీ స్కోర్</div>
       <p class="score-message" id="scoreMessage"></p>
-      <button class="restart-btn" onclick="startGame()">🔄 మళ్ళీ ఆడండి / Play Again</button>
+      <button class="restart-btn" id="ui-restart" onclick="startGame()">🔄 మళ్ళీ ఆడండి</button>
       <br>
-      <a href="index.html" class="home-btn">🏠 Home కి వెళ్ళు</a>
+      <a href="index.html" class="home-btn" id="ui-home">🏠 హోమ్ కి వెళ్ళు</a>
     </div>
 
   </div>
