@@ -71,83 +71,267 @@
     </div>
   </main>
 
-  <!-- ===== BANK BALANCE SHEET ===== -->
+
+  <!-- ===================================================
+       SHEET 1 : BANK BALANCE — Method Selector
+       =================================================== -->
   <div class="sheet-overlay" id="balance-sheet">
     <div class="sheet-box">
       <button class="sheet-close" onclick="closeSheet('balance-sheet')">✕</button>
       <div class="sheet-title">🏦 బ్యాంక్ బ్యాలెన్స్ చెక్ చేయండి</div>
-      <div class="sheet-sub">మీ రిజిస్టర్డ్ మొబైల్ నుండి కాల్ లేదా SMS చేయండి (100% సురక్షితం)</div>
-      
-      <div class="bill-grid">
-        <a class="upi-btn" href="tel:18004253800" style="padding: 24px 10px; text-align: center;">
-          <span style="font-size: 2.8rem; margin-bottom: 8px;">☎️</span>Missed Call
-          <div style="font-size: 0.85rem; font-weight: 600; color: #555; margin-top: 4px;">మిస్డ్ కాల్ ద్వారా</div>
+      <div class="sheet-sub">మీకు అనువైన పద్ధతి ఎంచుకోండి — 100% సురక్షితం</div>
+
+      <div class="method-grid">
+
+        <!-- Missed Call -->
+        <div class="method-card method-missed"
+             onclick="closeSheet('balance-sheet'); setTimeout(()=>openSheet('bank-missed-sheet'),160)">
+          <span class="method-icon">📵</span>
+          <div class="method-name">మిస్డ్ కాల్</div>
+          <div class="method-sub">కాల్ ఇవ్వండి<br>Balance SMS వస్తుంది</div>
+        </div>
+
+        <!-- SMS Balance -->
+        <div class="method-card method-sms"
+             onclick="closeSheet('balance-sheet'); setTimeout(()=>openSheet('bank-sms-sheet'),160)">
+          <span class="method-icon">💬</span>
+          <div class="method-name">SMS Balance</div>
+          <div class="method-sub">SMS పంపండి<br>Balance Reply వస్తుంది</div>
+        </div>
+
+        <!-- USSD *99# -->
+        <a class="method-card method-ussd" href="tel:*99%23">
+          <span class="method-icon">📞</span>
+          <div class="method-name">USSD *99#</div>
+          <div class="method-sub">Dial చేయండి
+            <span class="jio-warn">⚠️ Jio లో పని చేయదు</span>
+          </div>
         </a>
-        <a class="upi-btn" href="tel:*99#" style="padding: 24px 10px; text-align: center;">
-          <span style="font-size: 2.8rem; margin-bottom: 8px;">💬</span>USSD / SMS
-          <div style="font-size: 0.85rem; font-weight: 600; color: #555; margin-top: 4px;">*99# డయల్ చేయండి</div>
+
+        <!-- ATM -->
+        <a class="method-card method-atm"
+           href="https://www.google.com/maps/search/ATM+near+me" target="_blank">
+          <span class="method-icon">🏧</span>
+          <div class="method-name">దగ్గర ATM</div>
+          <div class="method-sub">ATM వద్ద చెక్ చేయండి<br>Internet అక్కర్లేదు</div>
         </a>
+
       </div>
-      
-      <p style="margin-top:18px; font-size:0.85rem; color:#C0392B; text-align:center; font-weight:700;">
-        ⚠️ బ్యాంక్ వారు మీ OTP లేదా PIN ఎప్పుడూ అడగరు!
-      </p>
+
+      <p class="balance-warn">⚠️ మీ OTP / PIN / Password ఎవరికీ చెప్పకండి!</p>
     </div>
   </div>
-      
-  <!-- ===== BILL CHOOSE SHEET ===== -->
+
+
+  <!-- ===================================================
+       SHEET 2 : MISSED CALL — Bank Selector
+       =================================================== -->
+  <div class="sheet-overlay" id="bank-missed-sheet">
+    <div class="sheet-box">
+      <button class="sheet-close" onclick="closeSheet('bank-missed-sheet')">✕</button>
+      <div class="sheet-title">📵 మీ బ్యాంక్ ఎంచుకోండి</div>
+      <div class="sheet-sub">మిస్డ్ కాల్ ఇవ్వండి — Balance SMS వస్తుంది (Free)</div>
+
+      <div class="bank-grid">
+        <a class="bank-card" href="tel:09223766666">
+          <span class="bank-logo">🏛️</span>
+          <span class="bank-name">SBI</span>
+          <span class="bank-num">09223766666</span>
+        </a>
+        <a class="bank-card" href="tel:9654242424">
+          <span class="bank-logo">🔵</span>
+          <span class="bank-name">HDFC Bank</span>
+          <span class="bank-num">9654242424</span>
+        </a>
+        <a class="bank-card" href="tel:9594613613">
+          <span class="bank-logo">🟠</span>
+          <span class="bank-name">ICICI Bank</span>
+          <span class="bank-num">9594613613</span>
+        </a>
+        <a class="bank-card" href="tel:08049400144">
+          <span class="bank-logo">🔴</span>
+          <span class="bank-name">Axis Bank</span>
+          <span class="bank-num">08049400144</span>
+        </a>
+        <a class="bank-card" href="tel:09015734734">
+          <span class="bank-logo">🟡</span>
+          <span class="bank-name">Canara Bank</span>
+          <span class="bank-num">09015734734</span>
+        </a>
+        <a class="bank-card" href="tel:09223008586">
+          <span class="bank-logo">🟢</span>
+          <span class="bank-name">Union Bank</span>
+          <span class="bank-num">09223008586</span>
+        </a>
+        <a class="bank-card" href="tel:18001802222">
+          <span class="bank-logo">🔷</span>
+          <span class="bank-name">PNB</span>
+          <span class="bank-num">18001802222</span>
+        </a>
+        <a class="bank-card" href="tel:8468001111">
+          <span class="bank-logo">🏦</span>
+          <span class="bank-name">Bank of Baroda</span>
+          <span class="bank-num">8468001111</span>
+        </a>
+      </div>
+
+      <p class="bank-tip">✅ కాల్ ఆటోమేటిక్ గా disconnect అవుతుంది — Balance SMS వస్తుంది</p>
+    </div>
+  </div>
+
+
+  <!-- ===================================================
+       SHEET 3 : SMS BALANCE — Bank Selector
+       =================================================== -->
+  <div class="sheet-overlay" id="bank-sms-sheet">
+    <div class="sheet-box">
+      <button class="sheet-close" onclick="closeSheet('bank-sms-sheet')">✕</button>
+      <div class="sheet-title">💬 SMS Balance Check</div>
+      <div class="sheet-sub">మీ బ్యాంక్ ఎంచుకోండి — SMS పంపి Balance చూడండి</div>
+
+      <div class="bank-grid">
+        <a class="bank-card" href="sms:09223766666?body=BAL">
+          <span class="bank-logo">🏛️</span>
+          <span class="bank-name">SBI</span>
+          <span class="bank-num">BAL → 09223766666</span>
+        </a>
+        <a class="bank-card" href="sms:5676712?body=BAL">
+          <span class="bank-logo">🔵</span>
+          <span class="bank-name">HDFC Bank</span>
+          <span class="bank-num">BAL → 5676712</span>
+        </a>
+        <a class="bank-card" href="sms:9215676766?body=IBAL">
+          <span class="bank-logo">🟠</span>
+          <span class="bank-name">ICICI Bank</span>
+          <span class="bank-num">IBAL → 9215676766</span>
+        </a>
+        <a class="bank-card" href="sms:5676782?body=BAL">
+          <span class="bank-logo">🔴</span>
+          <span class="bank-name">Axis Bank</span>
+          <span class="bank-num">BAL → 5676782</span>
+        </a>
+        <a class="bank-card" href="sms:5607060?body=BAL">
+          <span class="bank-logo">🟡</span>
+          <span class="bank-name">Canara Bank</span>
+          <span class="bank-num">BAL → 5607060</span>
+        </a>
+        <a class="bank-card" href="sms:09223008486?body=BALAVL">
+          <span class="bank-logo">🟢</span>
+          <span class="bank-name">Union Bank</span>
+          <span class="bank-num">BALAVL → 09223008486</span>
+        </a>
+      </div>
+
+      <p class="bank-tip">📲 మీ రిజిస్టర్డ్ మొబైల్ నంబర్ నుండి మాత్రమే SMS పంపండి</p>
+    </div>
+  </div>
+
+
+  <!-- ===================================================
+       SHEET 4 : BILL TYPE — Selector
+       =================================================== -->
   <div class="sheet-overlay" id="bill-sheet">
     <div class="sheet-box">
       <button class="sheet-close" onclick="closeSheet('bill-sheet')">✕</button>
       <div class="sheet-title">💡 ఏ బిల్లు చెల్లించాలి?</div>
       <div class="sheet-sub">మీకు కావలసిన ఆప్షన్ ఎంచుకోండి</div>
       <div class="bill-grid">
-        <div class="bill-opt bill-trigger" data-type="electricity"><span>⚡</span>Electricity<br>కరెంట్ బిల్లు</div>
-        <div class="bill-opt bill-trigger" data-type="mobile"><span>📱</span>Mobile<br>Recharge</div>
-        <div class="bill-opt bill-trigger" data-type="scan"><span>📷</span>Scan QR<br>స్కాన్ చేసి పే</div>
-        <div class="bill-opt bill-trigger" data-type="other"><span>💳</span>Other<br>ఇతరాలు</div>
+        <div class="bill-opt bill-trigger" data-type="electricity">
+          <span>⚡</span>Electricity<br>కరెంట్ బిల్లు
+        </div>
+        <div class="bill-opt bill-trigger" data-type="mobile">
+          <span>📱</span>Mobile<br>Recharge
+        </div>
+        <div class="bill-opt bill-trigger" data-type="scan">
+          <span>📷</span>Scan QR<br>స్కాన్ చేసి పే
+        </div>
+        <div class="bill-opt bill-trigger" data-type="other">
+          <span>💳</span>Other<br>ఇతరాలు
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== STATE SELECTOR SHEET (For Electricity) ===== -->
+
+  <!-- ===================================================
+       SHEET 5 : STATE SELECTOR — Electricity Only
+       =================================================== -->
   <div class="sheet-overlay" id="state-sheet">
     <div class="sheet-box">
       <button class="sheet-close" onclick="closeSheet('state-sheet')">✕</button>
-      <div class="sheet-title">⚡ ఏ రాష్ట్రం? (State)</div>
+      <div class="sheet-title">⚡ మీ రాష్ట్రం ఏది?</div>
       <div class="sheet-sub">కరెంట్ బిల్లు కోసం రాష్ట్రం ఎంచుకోండి</div>
       <div class="bill-grid">
-        <div class="bill-opt state-trigger" data-state="ap"><span>🟢</span>Andhra Pradesh<br>ఆంధ్రప్రదేశ్</div>
-        <div class="bill-opt state-trigger" data-state="ts"><span>🔵</span>Telangana<br>తెలంగాణ</div>
+        <div class="bill-opt state-trigger" data-state="ap">
+          <span>🟢</span>Andhra Pradesh<br>ఆంధ్రప్రదేశ్
+        </div>
+        <div class="bill-opt state-trigger" data-state="ts">
+          <span>🔵</span>Telangana<br>తెలంగాణ
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ===== UPI APP CHOOSER SHEET ===== -->
-  <div class="sheet-overlay" id="upi-bill-sheet">
+
+  <!-- ===================================================
+       SHEET 6 : TELECOM — Mobile Recharge
+       =================================================== -->
+  <div class="sheet-overlay" id="telecom-sheet">
     <div class="sheet-box">
-      <button class="sheet-close" onclick="closeSheet('upi-bill-sheet')">✕</button>
-      <div class="sheet-title" id="upi-bill-title">ఓపెన్ చేయడానికి యాప్ ఎంచుకోండి</div>
-      <div class="sheet-sub">మీ ఫోన్ లో ఉన్న యాప్ ని ఎంచుకోండి</div>
-      <div class="upi-grid">
-        <a class="upi-btn" id="gpay-bill-link" href="#">
-          <span>🟢</span>Google Pay
+      <button class="sheet-close" onclick="closeSheet('telecom-sheet')">✕</button>
+      <div class="sheet-title">📱 మీ Operator ఎంచుకోండి</div>
+      <div class="sheet-sub">Official website లో recharge చేయండి — Safe & Secure</div>
+      <div class="telecom-grid">
+        <a class="telecom-btn" href="https://www.jio.com/self-care/recharge" target="_blank">
+          <span>🔵</span>Jio
+          <div class="telecom-sub">jio.com</div>
         </a>
-        <a class="upi-btn" id="phonepe-bill-link" href="#">
-          <span>🟣</span>PhonePe
+        <a class="telecom-btn" href="https://www.airtel.in/recharge-online/" target="_blank">
+          <span>🔴</span>Airtel
+          <div class="telecom-sub">airtel.in</div>
         </a>
-        <a class="upi-btn" id="paytm-bill-link" href="#">
-          <span>🔵</span>Paytm
+        <a class="telecom-btn" href="https://portal2.bsnl.in/myportal/quickpay.do" target="_blank">
+          <span>🟡</span>BSNL
+          <div class="telecom-sub">bsnl.in</div>
         </a>
+        <a class="telecom-btn" href="https://www.myvi.in/recharge" target="_blank">
+          <span>🟣</span>Vi (Vodafone)
+          <div class="telecom-sub">myvi.in</div>
+        </a>
+      </div>
+      <p class="bank-tip">🌐 Browser లో official website తెరుచుకుంటుంది — App అక్కర్లేదు</p>
+    </div>
+  </div>
+
+
+  <!-- ===================================================
+       SHEET 7 : PAY GUIDE — Dynamic Options
+       (Filled by main.js based on bill type + state)
+       =================================================== -->
+  <div class="sheet-overlay" id="pay-guide-sheet">
+    <div class="sheet-box">
+      <button class="sheet-close" onclick="closeSheet('pay-guide-sheet')">✕</button>
+      <div class="sheet-title" id="pgs-title">Payment Options</div>
+      <div class="sheet-sub" id="pgs-sub">మీకు అనువైన పద్ధతి ఎంచుకోండి</div>
+      <div class="pay-grid" id="pgs-options">
+        <!-- Injected dynamically by main.js -->
       </div>
     </div>
   </div>
 
-  <div id="location-toast" style="display:none;position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#1A7A4A;color:#fff;padding:14px 24px;border-radius:14px;font-family:'Baloo 2',cursive;font-weight:700;font-size:1rem;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.2);text-align:center;">
-    📍 WhatsApp కి redirect అవుతోంది!<br><small style="font-weight:400;font-size:0.85rem;">Location share చేయండి</small>
+
+  <!-- ===================================================
+       WhatsApp Location Toast
+       =================================================== -->
+  <div id="location-toast" style="display:none;position:fixed;bottom:28px;left:50%;
+       transform:translateX(-50%);background:#1A7A4A;color:#fff;padding:14px 24px;
+       border-radius:14px;font-family:'Baloo 2',cursive;font-weight:700;font-size:1rem;
+       z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,0.2);text-align:center;">
+    📍 WhatsApp కి redirect అవుతోంది!<br>
+    <small style="font-weight:400;font-size:0.85rem;">Location share చేయండి</small>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="main.js"></script> 
+  <script src="main.js"></script>
 </body>
 </html>
