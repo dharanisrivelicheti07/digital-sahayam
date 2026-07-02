@@ -1,6 +1,7 @@
 /* ============================================================
    DIGITAL SAHAYAM — style.css
    PS088: Digital Literacy for Rural Elderly
+   Updated: Balance Check Methods + Bill Payment Fix
    ============================================================ */
 
 /* ---------- CSS Variables ---------- */
@@ -34,10 +35,10 @@
 }
 
 /* ---------- Reset & Base ---------- */
-*, *::before, *::after { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html { scroll-behavior: smooth; }
@@ -82,13 +83,13 @@ h1, h2, h3, .font-display {
   background: rgba(255,255,255,0.07);
   border-radius: 50%;
 }
-.header-orange  { background: linear-gradient(135deg, var(--orange), #b84d00); box-shadow: 0 6px 20px rgba(232,100,10,0.35); }
-.header-purple  { background: linear-gradient(135deg, var(--purple), #3d1f6b); box-shadow: 0 6px 20px rgba(107,63,160,0.35); }
-.header-teal    { background: linear-gradient(135deg, var(--teal),   #074a4d); box-shadow: 0 6px 20px rgba(13,115,119,0.35); }
+.header-orange { background: linear-gradient(135deg, var(--orange), #b84d00); box-shadow: 0 6px 20px rgba(232,100,10,0.35); }
+.header-purple { background: linear-gradient(135deg, var(--purple), #3d1f6b); box-shadow: 0 6px 20px rgba(107,63,160,0.35); }
+.header-teal   { background: linear-gradient(135deg, var(--teal),   #074a4d); box-shadow: 0 6px 20px rgba(13,115,119,0.35); }
 
-.header-icon    { font-size: 3rem; line-height: 1; margin-bottom: 8px; }
-.header-title   { font-size: 2rem; font-weight: 800; line-height: 1.2; }
-.header-sub     { font-size: 0.95rem; opacity: 0.88; margin-top: 4px; }
+.header-icon  { font-size: 3rem; line-height: 1; margin-bottom: 8px; }
+.header-title { font-size: 2rem; font-weight: 800; line-height: 1.2; }
+.header-sub   { font-size: 0.95rem; opacity: 0.88; margin-top: 4px; }
 
 /* ---------- Back Button Bar ---------- */
 .btn-bar {
@@ -128,7 +129,6 @@ h1, h2, h3, .font-display {
   margin: 20px 0 14px;
 }
 
-/* Big action button */
 .big-btn {
   display: flex;
   flex-direction: column;
@@ -147,14 +147,13 @@ h1, h2, h3, .font-display {
   -webkit-user-select: none;
   user-select: none;
 }
-.big-btn:active  { transform: scale(0.95); box-shadow: var(--shadow-sm); }
-.big-btn:hover   { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.big-btn:active { transform: scale(0.95); box-shadow: var(--shadow-sm); }
+.big-btn:hover  { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 
 .big-btn .btn-icon    { font-size: 2.8rem; line-height: 1; }
 .big-btn .btn-label   { font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 800; text-align: center; line-height: 1.25; }
 .big-btn .btn-sublabel{ font-size: 0.8rem; font-weight: 600; opacity: 0.72; text-align: center; }
 
-/* Colour variants */
 .btn-emergency { background: var(--red-light);    color: var(--red);    border-color: var(--red);    }
 .btn-whatsapp  { background: #E6F5ED;             color: #128C7E;       border-color: #128C7E;       }
 .btn-bank      { background: var(--blue-light);   color: var(--blue);   border-color: var(--blue);   }
@@ -162,19 +161,20 @@ h1, h2, h3, .font-display {
 .btn-scam      { background: var(--purple-light);  color: var(--purple); border-color: var(--purple); }
 .btn-video     { background: var(--teal-light);    color: var(--teal);   border-color: var(--teal);  }
 
-/* ---------- UPI Chooser Sheet ---------- */
+/* ============================================================
+   BOTTOM SHEET — Base Styles
+   ============================================================ */
 .sheet-overlay {
-  display: none !important; /* Fixed visibility initialization bug */
-  position: fixed; 
+  display: none !important;
+  position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
   z-index: 1000;
   align-items: flex-end;
   justify-content: center;
 }
-.sheet-overlay.open { 
-  display: flex !important; 
-}
+.sheet-overlay.open { display: flex !important; }
+
 .sheet-box {
   background: var(--white);
   border-radius: 24px 24px 0 0;
@@ -183,19 +183,161 @@ h1, h2, h3, .font-display {
   padding: 22px 20px 36px;
   box-shadow: 0 -8px 32px rgba(0,0,0,0.15);
   animation: slideUp 0.28s ease;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
 .sheet-title {
   font-family: 'Baloo 2', cursive;
   font-size: 1.2rem; font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 6px;
 }
-.sheet-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; }
+.sheet-sub   { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; }
 .sheet-close {
   float: right; background: none; border: none;
   font-size: 1.4rem; cursor: pointer; color: var(--text-light); margin-top: -4px;
 }
+
+/* ============================================================
+   BALANCE CHECK — Method Selector Cards
+   ============================================================ */
+.method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.method-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 10px;
+  border-radius: var(--radius);
+  border: 2px solid;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.method-card:active { transform: scale(0.95); }
+.method-card:hover  { box-shadow: var(--shadow); }
+
+.method-icon { font-size: 2.4rem; margin-bottom: 6px; display: block; }
+.method-name { font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 800; }
+.method-sub  { font-size: 0.76rem; margin-top: 4px; line-height: 1.4; opacity: 0.82; }
+
+.method-missed { background: var(--blue-light);   border-color: var(--blue);   color: var(--blue);   }
+.method-sms    { background: var(--green-light);  border-color: var(--green);  color: var(--green);  }
+.method-ussd   { background: var(--orange-light); border-color: var(--orange); color: var(--orange); }
+.method-atm    { background: var(--yellow-light); border-color: #9A6A00;       color: #9A6A00;       }
+
+.jio-warn     { color: var(--red); font-size: 0.7rem; font-weight: 700; display: block; margin-top: 2px; }
+.balance-warn { margin-top: 14px; font-size: 0.83rem; color: var(--red); text-align: center; font-weight: 700; }
+
+/* ============================================================
+   BANK SELECTOR — Missed Call & SMS Sheets
+   ============================================================ */
+.bank-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.bank-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 8px;
+  border-radius: var(--radius-sm);
+  border: 2px solid #e8e8e8;
+  background: var(--white);
+  text-decoration: none;
+  color: var(--text-dark);
+  text-align: center;
+  font-family: 'Baloo 2', cursive;
+  cursor: pointer;
+  transition: var(--transition);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.bank-card:hover, .bank-card:active {
+  border-color: var(--blue);
+  background: var(--blue-light);
+}
+.bank-logo { font-size: 1.8rem; margin-bottom: 4px; }
+.bank-name { font-size: 0.95rem; font-weight: 800; }
+.bank-num  {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 3px;
+  font-family: 'Hind', sans-serif;
+  word-break: break-all;
+}
+
+.bank-tip {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--green);
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   BILL PAYMENT — Type & State Selectors
+   ============================================================ */
+.bill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bill-opt {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 18px 10px; border-radius: var(--radius);
+  border: 2px solid #e8e8e8; background: var(--white);
+  cursor: pointer; font-family: 'Baloo 2', cursive;
+  font-size: 0.95rem; font-weight: 700; color: var(--text-dark);
+  text-align: center; transition: var(--transition);
+  -webkit-user-select: none; user-select: none;
+}
+.bill-opt:hover, .bill-opt:active { border-color: var(--orange); background: var(--orange-light); }
+.bill-opt span { font-size: 2rem; }
+
+/* ============================================================
+   TELECOM SHEET — Mobile Recharge
+   ============================================================ */
+.telecom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.telecom-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 10px;
+  border-radius: var(--radius);
+  border: 2px solid #e8e8e8;
+  background: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Baloo 2', cursive;
+  font-size: 0.97rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  transition: var(--transition);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.telecom-btn:hover, .telecom-btn:active { border-color: var(--orange); background: var(--orange-light); }
+.telecom-btn span { font-size: 2.2rem; }
+.telecom-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+/* ============================================================
+   UPI / PAYMENT GUIDE SHEET — Dynamic Options
+   ============================================================ */
 .upi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .upi-btn {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -209,18 +351,42 @@ h1, h2, h3, .font-display {
 .upi-btn:hover, .upi-btn:active { border-color: var(--orange); background: var(--orange-light); }
 .upi-btn span { font-size: 2.4rem; }
 
-/* Bill sub-options */
-.bill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.bill-opt {
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  padding: 18px 10px; border-radius: var(--radius);
-  border: 2px solid #e8e8e8; background: var(--white);
-  cursor: pointer; font-family: 'Baloo 2', cursive;
-  font-size: 0.95rem; font-weight: 700; color: var(--text-dark);
-  transition: var(--transition);
+.pay-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.bill-opt:hover { border-color: var(--orange); background: var(--orange-light); }
-.bill-opt span  { font-size: 2rem; }
+.pay-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 14px;
+  border-radius: var(--radius);
+  border: 2px solid;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--transition);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.pay-option:active { transform: scale(0.98); }
+
+.pay-opt-icon { font-size: 2rem; flex-shrink: 0; width: 44px; text-align: center; }
+.pay-opt-info { flex: 1; }
+.pay-opt-name { font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 800; }
+.pay-opt-sub  { font-size: 0.78rem; margin-top: 3px; line-height: 1.4; opacity: 0.85; }
+
+.pay-website  { background: var(--blue-light);   border-color: var(--blue);   color: var(--blue);   }
+.pay-whatsapp { background: #E6F5ED;             border-color: #128C7E;       color: #128C7E;       }
+.pay-meeseva  { background: var(--yellow-light); border-color: #9A6A00;       color: #9A6A00;       }
+.pay-info     {
+  background: #FFFDE7;
+  border-color: #F5C518;
+  color: #5A4000;
+  cursor: default;
+}
+.pay-info .pay-opt-name { color: #5A4000; }
+.pay-info .pay-opt-sub  { color: #7A5A00; }
 
 /* ---------- Footer ---------- */
 footer {
@@ -243,7 +409,6 @@ footer {
 .sim-title { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 1.6rem; }
 .sim-body { max-width: 600px; margin: 20px auto; padding: 0 14px; }
 
-/* Language Toggle */
 .lang-toggle { display: flex; gap: 8px; }
 .lang-btn {
   padding: 6px 14px; border-radius: 50px;
@@ -254,7 +419,6 @@ footer {
 }
 .lang-btn.active { background: var(--white); color: var(--purple); border-color: var(--white); }
 
-/* Progress & Counters */
 .progress-bar-wrap { background: #e0e0e0; border-radius: 50px; height: 8px; overflow: hidden; margin-bottom: 6px; }
 .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--purple), #9d6de0); border-radius: 50px; transition: width 0.3s ease; }
 .q-counter { text-align: right; font-size: 0.85rem; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
@@ -266,12 +430,10 @@ footer {
 .badge-email    { background: var(--orange); }
 .badge-app      { background: #333; }
 
-/* Message Display Card */
 .msg-card { background: var(--white); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); margin-bottom: 16px; }
 .msg-header { font-size: 0.85rem; font-weight: 700; color: var(--text-light); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
 .msg-telugu, .msg-english { font-size: 1.05rem; line-height: 1.6; font-weight: 600; color: var(--text-dark); }
 
-/* Answer Interface Row */
 .answer-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
 .ans-btn { border-radius: var(--radius); font-family: 'Baloo 2', cursive; font-size: 1.05rem; font-weight: 800; padding: 14px 10px; cursor: pointer; border: 3px solid transparent; transition: var(--transition); text-align: center; }
 .ans-btn--real { background: var(--green-light); color: var(--green); border-color: var(--green); }
@@ -280,7 +442,6 @@ footer {
 .ans-btn--fake:hover:not(:disabled) { background: var(--red);   color: var(--white); }
 .ans-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
-/* Feedback Display Cards */
 .result-card { display: none; border-radius: var(--radius); padding: 16px; margin-bottom: 16px; font-size: 0.95rem; line-height: 1.6; border: 2px solid transparent; }
 .result-card.correct { background: var(--green-light); color: #0d5c35; border-color: var(--green); }
 .result-card.wrong   { background: var(--red-light);   color: #8b1a12; border-color: var(--red); }
@@ -289,12 +450,11 @@ footer {
 .next-btn, .restart-btn { width: 100%; background: var(--purple); color: var(--white); border: none; border-radius: var(--radius); font-family: 'Baloo 2', cursive; font-size: 1.08rem; font-weight: 800; padding: 14px; cursor: pointer; transition: background var(--transition); }
 .next-btn:hover, .restart-btn:hover { background: #532d80; }
 
-/* Endgame Summary View */
 .score-screen { display: none; text-align: center; background: var(--white); border-radius: var(--radius-lg); padding: 36px 20px; box-shadow: var(--shadow-lg); }
-.score-emoji { font-size: 4.5rem; margin-bottom: 10px; }
+.score-emoji  { font-size: 4.5rem; margin-bottom: 10px; }
 .score-number { font-family: 'Baloo 2', cursive; font-size: 2.2rem; font-weight: 800; color: var(--purple); }
-.score-label { font-size: 0.9rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-bottom: 12px; }
-.score-message { font-size: 1rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
+.score-label  { font-size: 0.9rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-bottom: 12px; }
+.score-message{ font-size: 1rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
 .home-btn { display: inline-block; margin-top: 14px; color: var(--purple); font-weight: 700; text-decoration: none; }
 
 /* ============================================================
@@ -345,10 +505,10 @@ footer {
 .video-body { padding: 14px 16px 16px; }
 
 .vtag { display: inline-block; font-size: 0.73rem; font-weight: 700; padding: 3px 10px; border-radius: 50px; margin-bottom: 7px; }
-.vtag-wa     { background: var(--green-light); color: var(--green); }
-.vtag-pay    { background: var(--yellow-light); color: #9A6A00; }
-.vtag-safe   { background: var(--purple-light); color: var(--purple); }
-.vtag-govt   { background: var(--blue-light);  color: var(--blue); }
+.vtag-wa   { background: var(--green-light);  color: var(--green); }
+.vtag-pay  { background: var(--yellow-light); color: #9A6A00; }
+.vtag-safe { background: var(--purple-light); color: var(--purple); }
+.vtag-govt { background: var(--blue-light);   color: var(--blue); }
 
 .v-title { font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; line-height: 1.35; }
 .v-desc  { font-size: 0.86rem; color: #666; line-height: 1.55; }
@@ -361,10 +521,16 @@ footer {
    RESPONSIVE OVERRIDES
    ============================================================ */
 @media (max-width: 400px) {
-  .header-title    { font-size: 1.55rem; }
-  .big-btn         { min-height: 125px; }
+  .header-title  { font-size: 1.55rem; }
+  .big-btn       { min-height: 125px; }
   .big-btn .btn-icon  { font-size: 2.3rem; }
   .big-btn .btn-label { font-size: 0.97rem; }
-  .upi-grid        { grid-template-columns: repeat(2, 1fr); }
-  .ans-btn         { font-size: 0.95rem; padding: 14px 8px; }
+  .method-grid   { gap: 10px; }
+  .method-icon   { font-size: 2rem; }
+  .method-name   { font-size: 0.9rem; }
+  .bank-grid     { grid-template-columns: 1fr 1fr; }
+  .telecom-grid  { grid-template-columns: 1fr 1fr; }
+  .ans-btn       { font-size: 0.95rem; padding: 14px 8px; }
+  .pay-opt-icon  { font-size: 1.6rem; width: 36px; }
+  .pay-opt-name  { font-size: 0.9rem; }
 }
